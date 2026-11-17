@@ -1,0 +1,18 @@
+# MATLAB / Simulink
+*.asv
+*.autosave
+*.slxc
+*.mexw64
+slprj/
+*.mat~
+sccprj/
+codegen/
+
+# CAD backups
+*.f3d.bak
+~$*
+*.SLDPRT.bak
+
+# OS
+.DS_Store
+Thumbs.db
