@@ -1,10 +1,9 @@
-Item,Part,Qty,Material,Size (mm),Volume each (cm3),Note
-1,Platform (U-channel),1,PA12 (SLS),65 x 55 x 15,14.81,Fixed pivot hole + slot (pin travel x 28.3-51.5)
-2,Base (U-channel),1,PA12 (SLS),64 x 45 x 15,12.66,Fixed pivot hole + slot (pin travel x 28.3-51.5)
-3,Arm with integrated pin,2,PA12 (SLS),59 x 11 x 3 (+pin),2.06,Pin-to-pin 48
-4,Arm,2,PA12 (SLS),59 x 11 x 3,1.85,Pin-to-pin 48
-5,Arm,4,PA12 (SLS),59 x 11 x 3,1.81,Pin-to-pin 48
-6,Cross rod,2,PA12 (SLS),dia 3 x 58,0.47,Platform pivot + platform slider
-7,Cross rod (base slider),1,PA12 (SLS),dia 3 x 48,0.40,Runs in base slot
-8,Short pin,4,PA12 (SLS),dia 6 x 7.6,0.09,Center / stage joints
-,Total,17,,,44.19,Approx. 42-44 g in PA12
+No,Part,File,Qty,Includes,Material,Size (mm),Volume (cm3)
+01,Top plate,01_TopPlate,1,-,Nylon (SLS),64 x 45 x 15,12.54
+02,Base plate,02_BasePlate,1,-,Nylon (SLS),64 x 45 x 15,12.54
+03,Lower arm left,03_LowerArm_Left,1,3 built-in pins,Nylon (SLS),53.5 x 14.4 x 33.3,2.09
+04,Lower arm right,04_LowerArm_Right,1,3 built-in pins,Nylon (SLS),53.5 x 14.4 x 33.3,2.09
+05,Upper arms,05_UpperArms_with_Pins_and_TopSlideRod,1,arm pair + center/lower pins + top slide rod,Nylon (SLS),53.5 x 49.2 x 33.3,4.40
+06,Upper links,06_UpperLinks_with_TopPivotRod,1,link pair + top pivot rod,Nylon (SLS),53.5 x 49.2 x 33.3,3.97
+07,Lower links,07_LowerLinks_with_BottomSlideRod,1,link pair + bottom slide rod,Nylon (SLS),53.5 x 49.2 x 33.3,3.97
+,Total,,7,,,64 x 49.2 x 66.1 (envelope),41.59
