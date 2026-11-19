@@ -1,5 +1,5 @@
 %% scissor_kinematics.m — 2-stage scissor lift: height & slider force
-% Geometry from hardware/mechanical/assembly/scissor_lift_assembly.stl
+% Geometry from hardware/mechanical/assembly/00_Assembly_ScissorLift_v3.step (v3)
 L      = 48;      % arm length, pin-to-pin [mm]
 nStage = 2;       % number of scissor stages
 offset = 21.5;    % base below bottom pin (10.5) + platform above top pin (11.0) [mm]
