@@ -1,7 +1,7 @@
 # Scissor Lift Mechanism
 
 > Term project — **Machinery** course
-> Kinematic & force analysis, symbolic modeling, Simscape Multibody simulation, and an SLS-printed prototype of a two-stage scissor lift.
+> Kinematic & force analysis, symbolic modeling, Simscape Multibody simulation, and a print-in-place SLS prototype (Formlabs Fuse 1+ 30W) of a two-stage scissor lift.
 
 <p align="center">
   <img src="media/diagrams/cad_iso.png" width="360" alt="Scissor lift CAD (isometric)">
@@ -32,10 +32,11 @@
 | Arm length (pin-to-pin) `L` | **48 mm** |
 | Arm angle range | **θ = 25° → 65°** (limited by slot length) |
 | Overall height | **62.1 mm → 108.5 mm** (stroke 46.4 mm) |
-| Footprint | 65 × 58 mm (incl. pin heads) |
-| Parts | 17 bodies (see [Part list](#part-list)) |
-| Manufacturing | SLS 3D printing (PA12 nylon) |
-| CAD | [`hardware/mechanical/assembly/scissor_lift_assembly.stl`](hardware/mechanical/assembly/scissor_lift_assembly.stl) |
+| Footprint | 64 × 49.2 mm (incl. pin heads) |
+| Parts | 7 printed parts, pins built in (see [Part list](#part-list)) |
+| Manufacturing | SLS print-in-place, Formlabs Fuse 1+ 30W (nylon) |
+| Design version | **v3** (see [Design revisions](#design-revisions)) |
+| CAD | [`00_Assembly_ScissorLift_v3.step`](hardware/mechanical/assembly/00_Assembly_ScissorLift_v3.step) · [3D preview (STL)](hardware/mechanical/assembly/00_Assembly_ScissorLift_v3.stl) · [print file (.3mf)](hardware/mechanical/assembly/00_Assembly_PrintInPlace_Fuse1plus30W.3mf) |
 
 ---
 
@@ -46,12 +47,12 @@
 
 | # | Link | Role |
 |---|---|---|
-| 1 | Base (U-channel) | Ground; fixed pivot + slot |
+| 1 | Base plate | Ground; fixed pivot + slot |
 | 2 | Lower arm A | Fixed pivot → upper stage joint |
 | 3 | Lower arm B | Slider → upper stage joint |
 | 4 | Upper arm A | Lower stage joint → platform slider |
 | 5 | Upper arm B | Lower stage joint → platform fixed pivot |
-| 6 | Platform (U-channel) | Output; fixed pivot + slot |
+| 6 | Top plate | Output; fixed pivot + slot |
 
 Each arm pair crosses at a center pivot (C1, C2). Left and right sides are identical, so the mechanism is analyzed as one planar linkage.
 
@@ -69,6 +70,7 @@ Geometry from the CAD model:
 | Quantity | Value |
 |---|---|
 | Fixed pivot x | 8.0 mm |
+| Pivot hole / slot width | Ø3.8 mm (for Ø3 pins) |
 | Slot (pin center travel) | x = 28.3 → 51.5 mm |
 | Horizontal pin span `s = L cos θ` | 20.3 → 43.5 mm |
 | Pin height per stage `L sin θ` | 20.3 → 43.5 mm |
@@ -84,7 +86,7 @@ Geometry from the CAD model:
 
 <p align="center"><img src="media/plots/height_vs_angle.png" width="520"></p>
 
-> Highest pose is the geometric limit set by the slot; arm interference near full extension should be checked on the prototype.
+> Full range 62–108 mm was checked in CAD with no collisions (v3); confirm on the printed prototype.
 
 ### 1.4 Mechanical Advantage & Critical Position
 Virtual work with load `W` on the platform and horizontal slider force `F` (frictionless, link weight ignored):
@@ -139,30 +141,44 @@ Files: [`simulation/multibody/`](simulation/multibody)
 ## Part IV — Built Prototype (SLS)
 
 <p align="center">
-  <img src="media/diagrams/cad_front.png" width="300" alt="Front view">
-  <img src="media/diagrams/cad_side.png" width="300" alt="Side view">
+  <img src="media/diagrams/cad_front.png" width="280" alt="Front view">
+  <img src="media/diagrams/cad_side.png" width="230" alt="Side view">
 </p>
 
 ### Part list
-| Qty | Part | Size (mm) | Volume each (cm³) |
-|---|---|---|---|
-| 1 | Platform (U-channel, slot + pivot holes) | 65 × 55 × 15 | 14.81 |
-| 1 | Base (U-channel, slot + pivot holes) | 64 × 45 × 15 | 12.66 |
-| 2 | Arm with integrated pin | 59 × 11 × 3 (+ pin) | 2.06 |
-| 2 | Arm | 59 × 11 × 3 | 1.85 |
-| 4 | Arm | 59 × 11 × 3 | 1.81 |
-| 2 | Cross rod, Ø3 | 58 long | 0.47 |
-| 1 | Cross rod (base slider), Ø3 | 48 long | 0.40 |
-| 4 | Short pin | Ø6 × 7.6 | 0.09 |
-| **17** | **Total** | envelope 65 × 58 × 66.1 | **44.19** |
+All parts share one assembly coordinate system (mm) — open them together and they snap into place.
 
-Estimated mass in PA12 (≈ 0.95–1.0 g/cm³): **≈ 42–44 g**.
-Bill of materials: [`hardware/bom.csv`](hardware/bom.csv)
+| # | Part | Includes | Size (mm) | Volume (cm³) |
+|---|---|---|---|---|
+| 01 | TopPlate | — | 64 × 45 × 15 | 12.54 |
+| 02 | BasePlate | — | 64 × 45 × 15 | 12.54 |
+| 03 | LowerArm_Left | 3 built-in pins | 53.5 × 14.4 × 33.3 | 2.09 |
+| 04 | LowerArm_Right | 3 built-in pins | 53.5 × 14.4 × 33.3 | 2.09 |
+| 05 | UpperArms_with_Pins_and_TopSlideRod | arm pair + center/lower pins + top slide rod | 53.5 × 49.2 × 33.3 | 4.40 |
+| 06 | UpperLinks_with_TopPivotRod | link pair + top pivot rod | 53.5 × 49.2 × 33.3 | 3.97 |
+| 07 | LowerLinks_with_BottomSlideRod | link pair + bottom slide rod | 53.5 × 49.2 × 33.3 | 3.97 |
+| | **Total (7 parts)** | | envelope 64 × 49.2 × 66.1 | **41.59** |
 
-### SLS printing notes
-- Holes in base/platform walls are Ø3.24 mm for Ø3 rods (≈ 0.12 mm radial clearance).
-- In the CAD file, arm-to-arm faces and pins-to-arm holes have **≈ 0 mm gap**. Printed as one assembly they will fuse — either print the 17 parts separately and assemble, or add clearance (typically ≥ 0.3–0.5 mm for SLS print-in-place; confirm with the print service).
-- No supports needed (SLS); de-powder the slots and pin holes before assembly.
+Estimated mass in nylon (≈ 0.95–1.0 g/cm³): **≈ 40–42 g**.
+Files: [`hardware/mechanical/parts/`](hardware/mechanical/parts) (STEP + STL per part) · BOM: [`hardware/bom.csv`](hardware/bom.csv)
+
+### SLS print-in-place design (Fuse 1+ 30W)
+| Feature | Value |
+|---|---|
+| Pins | Ø3 mm shaft, Ø6 mm head × 1.5 mm |
+| Pivot holes & slots | Ø3.8 mm → **0.4 mm** clearance around pins |
+| Mating faces (incl. pin head to wall) | **0.6 mm** gap |
+| Smallest gap measured between any two parts | 0.40 mm |
+
+- Print the whole mechanism in one job with [`00_Assembly_PrintInPlace_Fuse1plus30W.3mf`](hardware/mechanical/assembly/00_Assembly_PrintInPlace_Fuse1plus30W.3mf) (already centered on the build area); create the `.form` file in PreForm.
+- Parts 05–07 have pins/rods fused to the arms so nothing falls out — they **cannot** be printed separately and assembled (pin heads are larger than the holes).
+- Clear all powder from holes, slots and pin gaps before moving the mechanism.
+
+### Design revisions
+| Version | Change |
+|---|---|
+| v1 | 17 separate bodies, ≈ 0 mm gap at pins and arm faces → would fuse in a single SLS job |
+| **v3** | 7 parts with built-in pins, 0.4 mm pin / 0.6 mm face clearance, print-in-place on Fuse 1+ 30W; kinematics unchanged (L = 48 mm, θ = 25°–65°) |
 
 ### Prototype results
 - Measured height range vs. theoretical (62.1 → 108.5 mm):
@@ -188,8 +204,8 @@ Scissor-Lift-Mechanism/
 ├── docs/                       # Report (PDF) & presentation slides
 ├── hardware/
 │   ├── mechanical/
-│   │   ├── parts/              # Individual part files
-│   │   └── assembly/           # scissor_lift_assembly.stl
+│   │   ├── parts/              # STEP/ + STL/ — 7 parts (01–07)
+│   │   └── assembly/           # v3 assembly .step / .stl + print-in-place .3mf
 │   ├── drawings/               # 2D engineering drawings (PDF)
 │   └── bom.csv                 # Bill of materials
 ├── simulation/
