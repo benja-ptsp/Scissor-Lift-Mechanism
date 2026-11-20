@@ -160,7 +160,7 @@ All parts share one assembly coordinate system (mm) — open them together and t
 | | **Total (7 parts)** | | envelope 64 × 49.2 × 66.1 | **41.59** |
 
 Estimated mass in nylon (≈ 0.95–1.0 g/cm³): **≈ 40–42 g**.
-Files: [`hardware/mechanical/parts/`](hardware/mechanical/parts) (STEP + STL per part) · BOM: [`hardware/bom.csv`](hardware/bom.csv)
+Files: [`hardware/mechanical/parts/`](hardware/mechanical/parts) (STEP file per part) · BOM: [`hardware/bom.csv`](hardware/bom.csv)
 
 ### SLS print-in-place design (Fuse 1+ 30W)
 | Feature | Value |
@@ -211,9 +211,8 @@ Scissor-Lift-Mechanism/
 ├── docs/                       # Report (PDF) & presentation slides
 ├── hardware/
 │   ├── mechanical/
-│   │   ├── parts/              # STEP/ + STL/ — 7 parts (01–07)
+│   │   ├── parts/              # 7 part files (.step, 01–07)
 │   │   └── assembly/           # v3 assembly .step / .stl + print-in-place .3mf
-│   ├── drawings/               # 2D engineering drawings (PDF)
 │   └── bom.csv                 # Bill of materials
 ├── simulation/
 │   ├── symbolic/               # scissor_kinematics.m + output tables
