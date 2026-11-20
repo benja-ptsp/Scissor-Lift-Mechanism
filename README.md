@@ -181,6 +181,13 @@ Files: [`hardware/mechanical/parts/`](hardware/mechanical/parts) (STEP + STL per
 | **v3** | 7 parts with built-in pins, 0.4 mm pin / 0.6 mm face clearance, print-in-place on Fuse 1+ 30W; kinematics unchanged (L = 48 mm, θ = 25°–65°) |
 
 ### Prototype results
+<p align="center">
+  <img src="media/prototype/prototype_lowest.jpg" width="260" alt="Prototype at lowest position">
+  <img src="media/prototype/prototype_highest.jpg" width="260" alt="Prototype at highest position">
+  <img src="media/prototype/prototype_side.jpg" width="260" alt="Prototype side view">
+</p>
+<p align="center"><em>Lowest position · Highest position · Side view</em></p>
+
 - Measured height range vs. theoretical (62.1 → 108.5 mm):
 - Problems found & improvements:
 
