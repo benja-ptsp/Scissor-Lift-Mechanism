@@ -208,7 +208,6 @@ Files: [`hardware/mechanical/parts/`](hardware/mechanical/parts) (STEP file per 
 Scissor-Lift-Mechanism/
 ├── README.md
 ├── RUN_ME.m                    # One-click runner
-├── docs/                       # Report (PDF) & presentation slides
 ├── hardware/
 │   ├── mechanical/
 │   │   ├── parts/              # 7 part files (.step, 01–07)
@@ -217,7 +216,6 @@ Scissor-Lift-Mechanism/
 ├── simulation/
 │   ├── symbolic/               # scissor_kinematics.m + output tables
 │   └── multibody/              # Simscape model (.slx) + import script
-├── data/                       # Raw results (.csv) — simulation & measurements
 └── media/
     ├── diagrams/               # Kinematic diagram, CAD renders
     ├── plots/                  # Graphs from analysis
