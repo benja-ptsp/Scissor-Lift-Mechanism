@@ -231,8 +231,7 @@ Scissor-Lift-Mechanism/
 ## Team
 | Name | Student ID | Responsibility |
 |---|---|---|
-| | | CAD & prototype |
-| | | Symbolic analysis |
-| | | Simscape simulation |
+| Benja Phatarachreonsophon | 6730277321 | CAD & prototype |
+| Punyawee Chaiiam | 6730320621 | Symbolic analysis |
+| Phasit Chaisrithong | 6730353321 | Simscape simulation |
 
-**Course:** Machinery · **Instructor:** — · **Semester:** —
