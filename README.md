@@ -104,6 +104,18 @@ The same ratio is the velocity ratio: `v_platform = 2 cot θ · v_slider`.
 ---
 
 ## Part II — Symbolic Analysis
+
+**MATLAB analysis:** [analyze_lift_symbolically.m](simulation/symbolic/analyze_lift_symbolically.m).
+
+Run from the repository root (requires Symbolic Math Toolbox):
+
+```matlab
+addpath(fullfile(pwd,'simulation','symbolic'));
+result = analyze_lift_symbolically(23, 5);
+```
+
+Generates position and velocity graphs for the platform and bottom slider, input-output curves, acceleration and arm rotation. Results are saved in `simulation/symbolic/Results/`. Defaults: 23 mm slider stroke and 5 s cycle.
+
 Files: [`simulation/symbolic/`](simulation/symbolic)
 
 ### 2.1 Position
@@ -125,6 +137,19 @@ Files: [`simulation/symbolic/`](simulation/symbolic)
 ---
 
 ## Part III — Simscape Multibody Simulation
+
+**Simulink model:** [ScissorLift_Simulink_Multibody.slx](simulation/multibody/ScissorLift_Simulink_Multibody.slx).
+
+**Required CAD dependencies:** [Geometry/](simulation/multibody/Geometry) contains `Base_V2.step`, `Link.step`, `ShaftforSlider_V2.step`, `TopShaft.step` and `Top_V2.step`. Keep this folder beside the model. Download the whole repository using **Code > Download ZIP**, then extract it.
+
+Open from the repository root:
+
+```matlab
+open_system(fullfile(pwd,'simulation','multibody','ScissorLift_Simulink_Multibody.slx'));
+```
+
+Saved with MATLAB R2026a; requires Simulink, Simscape and Simscape Multibody. Click Run to simulate. The model loads its sibling Geometry folder automatically.
+
 Files: [`simulation/multibody/`](simulation/multibody)
 
 1. Export CAD assembly → Simscape Multibody (`smimport`)
